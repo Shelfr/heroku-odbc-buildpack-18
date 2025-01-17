@@ -5,12 +5,6 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 echo "Installing Microsoft ODBC Driver 18 for SQL Server..."
-
-# Add the Microsoft package repository for ODBC
-curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
-
-# Update the package list
 apt-get update
 
 # Install the ODBC Driver 18 and required tools
