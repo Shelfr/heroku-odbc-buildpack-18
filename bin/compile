@@ -5,10 +5,10 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 echo "Installing Microsoft ODBC Driver 18 for SQL Server..."
-apt-get update
+sudo apt-get update
 
 # Install the ODBC Driver 18 and required tools
-ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
 
 # Verify installation
 if command -v odbcinst &> /dev/null; then
