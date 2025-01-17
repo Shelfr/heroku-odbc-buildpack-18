@@ -5,17 +5,11 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 echo "Installing Microsoft ODBC Driver 18 for SQL Server..."
-sudo apt-get update
 
-# Install the ODBC Driver 18 and required tools
-sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+# Add the Microsoft package repository for ODBC
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
-# Verify installation
-if command -v odbcinst &> /dev/null; then
-    echo "ODBC installed successfully."
-else
-    echo "ODBC installation failed."
-    exit 1
-fi
+# Update the package list
 
 echo "Buildpack installation completed."
